@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Working-Modificado</title>
+</head>
+<body>
+    <h1>Jogo da Velha</h1>
+    <div>
+        <div  id="00" class="square" onmouseover="onMouseOver(this)" onmouseout="outMouseOver(this)" onclick="choiceSquare(this.id)"></div>
+        <div  id="01" class="square" onmouseover="onMouseOver(this)" onmouseout="outMouseOver(this)" onclick="choiceSquare(this.id)"></div>
+        <div  id="02" class="square" onmouseover="onMouseOver(this)" onmouseout="outMouseOver(this)" onclick="choiceSquare(this.id)"></div>
+    </div>
+    <div>
+        <div  id="10" class="square" onmouseover="onMouseOver(this)" onmouseout="outMouseOver(this)" onclick="choiceSquare(this.id)"></div>
+        <div  id="11" class="square" onmouseover="onMouseOver(this)" onmouseout="outMouseOver(this)" onclick="choiceSquare(this.id)"></div>
+        <div  id="12" class="square" onmouseover="onMouseOver(this)" onmouseout="outMouseOver(this)" onclick="choiceSquare(this.id)"></div>
+    </div>
+    <div>
+        <div  id="20" class="square" onmouseover="onMouseOver(this)" onmouseout="outMouseOver(this)" onclick="choiceSquare(this.id)"></div>
+        <div  id="21" class="square" onmouseover="onMouseOver(this)" onmouseout="outMouseOver(this)" onclick="choiceSquare(this.id)"></div>
+        <div  id="22" class="square" onmouseover="onMouseOver(this)" onmouseout="outMouseOver(this)" onclick="choiceSquare(this.id)"></div>
+    </div>
+    <div class="gamer">
+        <label>Jogador:</label>
+        <label id="selectedGamer"></label>
+    </div>
+    <div class="winner">
+        <label id="selectedWinner"></label>
+    </div>
+    <div>
+        <button onclick="initialization()">Reiniciar</button>
+    </div>
+
+</body>
+
+<script src="assets/js/script.js"></script>
+
+</html>

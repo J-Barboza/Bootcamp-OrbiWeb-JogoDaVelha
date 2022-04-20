@@ -1,0 +1,31 @@
+body{
+    text-align: center;
+    background: #26a69a;
+}
+
+.square {
+    text-align: center;
+    width: 50px;
+    display: inline-block;
+    padding: 40px;
+    font-size: 60px;
+    margin: 5px;
+}
+
+.gamer, .winner {
+    font-size: 30px;
+    margin-top: 10px;
+
+}
+
+button {
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
+    background: gray;
+    cursor: pointer;
+}
+
+.noClick {
+    pointer-events:none;
+}
