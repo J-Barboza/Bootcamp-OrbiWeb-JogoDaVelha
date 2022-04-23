@@ -1,3 +1,13 @@
+@font-face {
+	font-family: myFont;
+    src:url('/assets/font/KeeponTruckin.ttf');
+}
+
+h1 {
+    font-size: 50px;
+	font-family:myFont;
+}
+
 body{
     text-align: center;
     background: #26a69a;
@@ -5,27 +15,45 @@ body{
 
 .square {
     text-align: center;
+    font-family: myFont;
+    border-radius: 20%;
     width: 50px;
     display: inline-block;
-    padding: 40px;
+    padding: 10px 40px 40px;
     font-size: 60px;
     margin: 5px;
 }
 
-.gamer, .winner {
+.playerwinner {
+    font-family:  myFont;
     font-size: 30px;
-    margin-top: 10px;
-
-}
-
-button {
-    margin-top: 10px;
-    width: 100px;
-    height: 30px;
-    background: gray;
-    cursor: pointer;
+    margin-top: 20px;
+    padding-bottom: 10px;
 }
 
 .noClick {
     pointer-events:none;
+}
+
+.button {
+	box-shadow: 0px 10px 9px -4px #3e7327;
+	background: linear-gradient(to bottom, #2e7809 5%, #72b352 100%);
+	background-color: #2e7809;
+	border-radius: 10px;
+	border: 1px solid #338509;
+	display: inline-block;
+	cursor: pointer;
+	color: #000000;
+	font-family: myFont;
+	font-size: 22px;
+	padding: 5px 31px;
+	text-decoration: none;
+}
+.button:hover {
+	background: linear-gradient(to bottom, #72b352 5%, #2e7809 100%);
+	background-color: #72b352;
+}
+.button:active {
+	position: relative;
+	top: 1px;
 }

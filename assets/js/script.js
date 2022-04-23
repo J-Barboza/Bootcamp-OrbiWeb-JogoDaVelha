@@ -1,7 +1,7 @@
 var board = [];
-var gamer = null;
-var winner = 0;
-var selectedGamer = document.getElementById('selectedGamer');
+var player;
+var winner;
+var selectedPlayerWinner = document.getElementById('playerAndWinner');
 var squares = document.getElementsByClassName('square');
 
 window.onload = function() {
@@ -14,10 +14,13 @@ function initialization() {
         squares[i].style.background = "#b2ebf2"
     }
     winner = 0;
-    selectedWinner.innerHTML = '';
 	showBoard(board);
-    changeGamer('X');
+    scoreboard('Player: ', 'X')
     enableClick();
+}
+
+function as(valor){
+    console.log(valor);
 }
 
 function choiceSquare(selectedSquare){
@@ -26,27 +29,26 @@ function choiceSquare(selectedSquare){
     var c = Number(selectedSquare[1])
    
     if (board[l][c] !== undefined) {
-		return;
+   		return;
 	} else {
-        board[l][c] = gamer;
+        board[l][c] = player;
         showBoard(board);
-        compareState(gamer);
-        gamer = (gamer === 'X')?"O":"X";
-        changeGamer(gamer);
+        compareState(player);
+        player = (player === 'X')?"O":"X";
+        if (winner==0)
+            scoreboard('Player: ', player);
     }
 }
 
-function changeGamer(value){
-    gamer = value;
-    selectedGamer.innerHTML = gamer;
+// display current player or winner 
+function scoreboard(description, value){
+    player = value;
+    if (description !== null){
+        selectedPlayerWinner.innerHTML = description + player;
+    }
 }
 
-function declaresWinner(winner){
-    selectedWinner.innerHTML = (winner == 1) ? 'Vencedor é o X' : 'Vencedor é o O';
-    winner = 0;
-}
-
-//atualiza tabuleiro
+//update board
 function showBoard(board) {	
 	for (let i=0; i<3; i++)
 		for (let j=0; j<3; j++) {
@@ -59,10 +61,10 @@ function showBoard(board) {
 		}
 }
 
-function compareState(gamer){
+function compareState(player){
     var x, y;
     
-    // testar linhas
+    // test line
     for (x=0; x<3; x++){
         if (board[x][0] != undefined && board[x][0] == board[x][1] && board[x][0] == board[x][2]) {
             winner = (board[x][0] == "X")? 1: -1;
@@ -74,7 +76,7 @@ function compareState(gamer){
 		}
     }
 
-    // testar colunas
+    // test column
     if (winner == 0){
         for (let y=0; y<3; y++){
             if (board[0][y] != undefined && board[0][y] == board[1][y] && board[0][y] == board[2][y]) {
@@ -87,37 +89,37 @@ function compareState(gamer){
         }
     }
 
-    // testar diagonais
+    // test diagonals
     if (winner == 0) {
         if ( board[1][1] != undefined) {
             if (board[0][0] == board[1][1] && board[0][0] == board[2][2]) {
-                squares[0].style.background = '#00e5ff';
-                squares[4].style.background = '#00e5ff';
-                squares[8].style.background = '#00e5ff';
+                for (let i = 0; i <= 8; i += 4){
+                    squares[i].style.background = '#00e5ff';
+                }
                 winner = (board[1][1] == "X")? 1: -1;
             }
             if (board[0][2] == board[1][1] && board[0][2] == board[2][0]) {
-                squares[2].style.background = '#00e5ff';
-                squares[4].style.background = '#00e5ff';
-                squares[6].style.background = '#00e5ff';
+                for (let i = 2; i <= 6; i += 2){
+                    squares[i].style.background = '#00e5ff';
+                }
                 winner = (board[1][1] == "X")? 1: -1;
             }
         }
     }
 
-    // Declara vencedor
+    // show winner
     if (winner !== 0){
         desableClick()
-        changeGamer('')
-        declaresWinner(winner)
+        scoreboard('Winner: ', (winner == 1) ? 'X' : 'O')
     }
     
-    // desabilita click qdo termina todas as jogadas
+    // disable click when finished moves
     const xArray = board.toString().split(",");
     const filtered = xArray.filter((el) => {
         return el !== null && typeof el !== 'undefined' && el !== '';
       });
     if (filtered.length === 9){
+        selectedPlayerWinner.innerHTML = 'Tie!!!'
         desableClick();
     }
 }
